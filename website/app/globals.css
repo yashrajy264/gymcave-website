@@ -1,0 +1,250 @@
+/* Typography falls back to variables injected by next/font in layout.tsx */
+:root {
+  /* Dark Theme (Default) */
+  --bg-void: #0A0A0F;
+  --bg-carbon: #12121A;
+  --bg-elevated: #1A1A26;
+  --bg-subtle: #222232;
+  
+  --accent-lime: #C8FF00;
+  --accent-lime-glow: rgba(200,255,0,0.15);
+  --accent-lime-muted: #A3CC00;
+  --accent-lime-dim: rgba(200,255,0,0.08);
+  
+  --urgency-orange: #FF6B35;
+  
+  --text-primary: #FFFFFF;
+  --text-secondary: #A0A0B8;
+  --text-muted: #6B6B80;
+  
+  --border-default: rgba(255,255,255,0.06);
+  --border-hover: rgba(200,255,0,0.2);
+  
+  --gradient-hero: linear-gradient(135deg, #0A0A0F 0%, #12121A 50%, #1A0A2E 100%);
+  --gradient-cta: linear-gradient(135deg, #C8FF00 0%, #A3CC00 100%);
+  --gradient-glow: radial-gradient(600px circle, rgba(200,255,0,0.06), transparent 70%);
+  --gradient-mesh: radial-gradient(ellipse at 20% 50%, rgba(200,255,0,0.08) 0%, transparent 50%), radial-gradient(ellipse at 80% 50%, rgba(120,80,255,0.06) 0%, transparent 50%);
+  --gradient-divider: linear-gradient(90deg, transparent, rgba(200,255,0,0.2), transparent);
+  
+  --shadow-card: 0 4px 24px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
+  --shadow-elevated: 0 8px 48px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.3);
+  --shadow-glow-lime: 0 0 40px rgba(200,255,0,0.15), 0 0 80px rgba(200,255,0,0.05);
+
+  /* Typography Fallbacks (actual fonts provided via layout.tsx next/font) */
+  /* We don't redefine them here to avoid overwriting next/font's variables */
+
+  /* Spacing (8px grid) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  /* Transitions */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 600ms;
+  --duration-cinematic: 1200ms;
+
+  /* Layout */
+  --max-width: 1200px;
+  --navbar-height: 56px;
+}
+
+/* ---- Reset & Base ---- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: auto !important; /* Conflict with Lenis */
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-void);
+  color: var(--text-secondary);
+  line-height: 1.65;
+  font-size: 16px;
+  overflow-x: hidden;
+  min-height: 100vh;
+  /* Hardware acceleration for the main container */
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img, video {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  color: inherit;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* ---- Typography ---- */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+
+.display {
+  font-family: var(--font-heading);
+  font-size: clamp(48px, 8vw, 100px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  color: var(--text-primary);
+}
+
+h1, .h1 {
+  font-size: clamp(36px, 5vw, 72px);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+}
+
+h2, .h2 {
+  font-size: clamp(28px, 3.5vw, 48px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+h3, .h3 {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+h4, .h4 {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.body-lg {
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.body-sm {
+  font-size: 14px;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+.overline {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  color: var(--accent-lime);
+}
+
+.stat-number {
+  font-family: var(--font-mono);
+  font-size: clamp(36px, 5vw, 72px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.0;
+  color: var(--accent-lime);
+}
+
+/* ---- Layout Utilities ---- */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+
+.section {
+  padding: var(--space-10) 0;
+}
+
+.section-sm {
+  padding: var(--space-8) 0;
+}
+
+.text-center { text-align: center; }
+.text-lime { color: var(--accent-lime); }
+.text-muted { color: var(--text-muted); }
+
+/* ---- Reduced Motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---- Scrollbar ---- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-void);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-subtle);
+  border-radius: var(--radius-pill);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ---- Selection ---- */
+::selection {
+  background: rgba(200,255,0,0.2);
+  color: var(--text-primary);
+}

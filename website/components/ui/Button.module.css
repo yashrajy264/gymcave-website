@@ -1,0 +1,79 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all var(--duration-fast) ease;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.label {
+  position: relative;
+}
+
+.icon {
+  display: inline-flex;
+  transition: transform var(--duration-normal) var(--ease-out-expo);
+}
+
+.button:hover .icon {
+  transform: translateX(4px);
+}
+
+/* Primary */
+.primary {
+  background: var(--gradient-cta);
+  color: #0A0A0F;
+  padding: 14px 32px;
+  box-shadow: 0 2px 16px rgba(200, 255, 0, 0.15);
+}
+
+.primary:hover {
+  box-shadow: var(--shadow-glow-lime);
+}
+
+/* Secondary */
+.secondary {
+  background: transparent;
+  color: var(--text-primary);
+  padding: 14px 32px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.secondary:hover {
+  border-color: var(--accent-lime);
+  color: var(--accent-lime);
+  background: var(--accent-lime-dim);
+}
+
+/* Ghost */
+.ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  padding: 8px 16px;
+}
+
+.ghost:hover {
+  color: var(--text-primary);
+}
+
+/* Sizes */
+.lg {
+  font-size: 16px;
+  padding: 18px 40px;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

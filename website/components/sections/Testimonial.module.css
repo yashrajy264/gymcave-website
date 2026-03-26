@@ -1,0 +1,47 @@
+.section {
+  padding: var(--space-10) 0;
+  background-color: var(--bg-void);
+  border-top: 1px solid var(--border-default);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.block {
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.quoteMarkWrap {
+  color: var(--accent-lime);
+  opacity: 0.6;
+}
+
+.quote {
+  font-family: var(--font-heading);
+  font-size: clamp(20px, 3vw, 30px);
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.4;
+  font-style: normal;
+}
+
+.attribution {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border-default);
+}
+
+.name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.role {
+  font-size: 13px;
+  color: var(--text-muted);
+}

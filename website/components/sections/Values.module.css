@@ -1,0 +1,58 @@
+.sectionHeader {
+  text-align: center;
+  margin-bottom: var(--space-10);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.valueCard {
+  background: var(--bg-carbon);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-xl);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  transition: border-color 0.3s ease;
+}
+
+.valueCard:hover {
+  border-color: var(--border-hover);
+}
+
+.valueIcon {
+  font-size: 32px;
+  margin-bottom: var(--space-2);
+}
+
+.valueCard h3 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  margin: 0;
+}
+
+.valueCard p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 1023px) {
+  .valuesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .valuesGrid {
+    grid-template-columns: 1fr;
+  }
+}

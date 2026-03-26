@@ -1,0 +1,141 @@
+.navbar {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: calc(100% - 32px);
+  max-width: 780px;
+  border-radius: var(--radius-pill);
+  background: rgba(10, 10, 15, 0.65);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--border-default);
+  transition: all var(--duration-normal) var(--ease-out-expo);
+}
+
+.scrolled {
+  background: rgba(10, 10, 15, 0.9);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  max-width: 720px;
+  border-color: rgba(200, 255, 0, 0.2);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-5);
+  height: var(--navbar-height);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logoImg {
+  height: 28px;
+  width: auto;
+}
+
+.links {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.link {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  transition: all var(--duration-fast) ease;
+  position: relative;
+}
+
+.link:hover {
+  color: var(--text-primary);
+}
+
+.link.active {
+  color: var(--accent-lime);
+  background: var(--accent-lime-dim);
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: var(--text-primary);
+  background: transparent;
+  transition: all var(--duration-fast) ease;
+}
+
+.hamburger:hover {
+  background: var(--bg-elevated);
+}
+
+.mobileOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(10, 10, 15, 0.98);
+  backdrop-filter: blur(40px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobileMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.mobileLink {
+  font-family: var(--font-heading);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  transition: color var(--duration-fast) ease;
+}
+
+.mobileLink:hover,
+.mobileLink.active {
+  color: var(--accent-lime);
+}
+
+@media (max-width: 767px) {
+  .links {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .navbar {
+    max-width: calc(100% - 32px);
+  }
+
+  .scrolled {
+    max-width: calc(100% - 32px);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .link {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}

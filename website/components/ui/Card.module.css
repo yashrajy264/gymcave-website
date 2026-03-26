@@ -1,0 +1,136 @@
+.card {
+  position: relative;
+  background: var(--bg-carbon);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-xl);
+  padding: 40px;
+  overflow: hidden;
+  transition: all var(--duration-normal) ease;
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card:hover {
+  border-color: var(--border-hover);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--duration-normal) ease;
+  z-index: 1;
+}
+
+.card:hover .glow {
+  opacity: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.iconWrap {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--accent-lime-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-5);
+  position: relative;
+  color: var(--accent-lime);
+}
+
+.iconWrap::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: var(--radius-lg);
+  background: radial-gradient(circle, rgba(200,255,0,0.12), transparent 70%);
+  z-index: -1;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+  letter-spacing: -0.01em;
+}
+
+.description {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-6);
+  flex-grow: 1;
+}
+
+.imageContainer {
+  position: relative;
+  width: calc(100% + 80px);
+  margin-left: -40px;
+  margin-right: -40px;
+  height: 200px;
+  margin-top: auto;
+  margin-bottom: var(--space-6);
+  border-top: 1px solid var(--border-default);
+  overflow: hidden;
+}
+
+.cardImage {
+  object-fit: cover;
+  object-position: top;
+  transition: transform var(--duration-slow) var(--ease-out-expo);
+}
+
+.card:hover .cardImage {
+  transform: scale(1.05);
+}
+
+.hasImage .description {
+  margin-bottom: var(--space-4);
+}
+
+.learnMore {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent-lime);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: auto;
+}
+
+.arrow {
+  display: inline-block;
+  transition: transform var(--duration-normal) var(--ease-out-expo);
+}
+
+.card:hover .arrow {
+  transform: translateX(4px);
+}

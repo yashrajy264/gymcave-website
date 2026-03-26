@@ -1,0 +1,31 @@
+.hero {
+  position: relative;
+  padding: calc(var(--navbar-height) + var(--space-10)) 0 var(--space-10);
+  background: var(--bg-void);
+  overflow: hidden;
+  text-align: center;
+}
+
+.heroGradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 600px;
+  background: radial-gradient(circle at 50% 0%, rgba(200, 255, 0, 0.08), transparent 70%);
+  pointer-events: none;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heroSub {
+  max-width: 600px;
+  color: var(--text-secondary);
+  margin: var(--space-6) 0 0;
+}
