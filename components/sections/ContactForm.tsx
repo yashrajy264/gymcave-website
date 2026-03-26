@@ -164,7 +164,7 @@ export default function ContactForm() {
                   <span className={styles.infoIcon}>✉</span>
                   <div>
                     <span className={styles.infoLabel}>Email</span>
-                    <span className={styles.infoValue}>hello@gymcave.app</span>
+                    <span className={styles.infoValue}>gymcaveapp@gmail.com</span>
                   </div>
                 </div>
                 <div className={styles.infoItem}>
@@ -178,7 +178,7 @@ export default function ContactForm() {
                   <span className={styles.infoIcon}>📞</span>
                   <div>
                     <span className={styles.infoLabel}>Phone</span>
-                    <span className={styles.infoValue}>+91-XXX-XXX-XXXX</span>
+                    <span className={styles.infoValue}>+91-6261090395</span>
                   </div>
                 </div>
                 <div className={styles.infoItem}>
