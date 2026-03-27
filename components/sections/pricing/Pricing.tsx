@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Check } from 'lucide-react';
+import Link from 'next/link';
 import styles from './Pricing.module.css';
 
 export default function Pricing() {
@@ -65,7 +66,9 @@ export default function Pricing() {
               <li className={styles.feature}><Check className={styles.icon} size={20} strokeWidth={1} /> Free regular maintenance and server costs</li>
             </ul>
 
-            <button className={`${styles.cta} ${styles.ctaPrimary}`}>Get Dedicated License</button>
+            <Link href="/contact" className={`${styles.cta} ${styles.ctaPrimary}`} style={{ display: 'block', textAlign: 'center' }}>
+              Get Dedicated License
+            </Link>
           </div>
 
           {/* Plan 2 */}
@@ -84,12 +87,14 @@ export default function Pricing() {
               <li className={styles.feature}><Check className={styles.icon} size={20} /> Full access to all GymCave OS features</li>
               <li className={styles.feature}><Check className={styles.icon} size={20} /> Self-service setup and automated migration</li>
               <li className={styles.feature}><Check className={styles.icon} size={20} /> GymCave branded native app integration</li>
-              <li className={styles.feature}><Check className={styles.icon} size={20} /> Standard email and chat support</li>
+              <li className={styles.feature}><Check className={styles.icon} size={20} /> Standard email and support</li>
               <li className={styles.feature}><Check className={styles.icon} size={20} /> Core reporting and analytics dashboard</li>
               <li className={styles.feature}><Check className={styles.icon} size={20} /> Automatic feature updates</li>
             </ul>
 
-            <button className={`${styles.cta} ${styles.ctaSecondary}`}>Start Monthly Subscription</button>
+            <Link href="/contact" className={`${styles.cta} ${styles.ctaSecondary}`} style={{ display: 'block', textAlign: 'center' }}>
+              Start Monthly Subscription
+            </Link>
           </div>
         </div>
       </div>
