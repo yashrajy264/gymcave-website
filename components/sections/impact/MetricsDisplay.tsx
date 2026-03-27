@@ -31,7 +31,7 @@ export default function MetricsDisplay() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                whileHover={{ y: -5, borderColor: 'var(--accent-lime)' }}
+                whileHover={{ y: -5, borderColor: 'var(--text-primary)' }}
               >
                 <div className={styles.value}>{m.value}</div>
                 <div className={styles.label}>{m.label}</div>

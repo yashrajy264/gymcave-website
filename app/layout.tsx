@@ -40,6 +40,9 @@ export const metadata: Metadata = {
     title: "GymCave — The Future of Gym Management",
     description: "One powerful platform to manage members, track payments, and grow your fitness empire.",
   },
+  icons: {
+    icon: "/favicon.ico?v=3",
+  },
 };
 
 

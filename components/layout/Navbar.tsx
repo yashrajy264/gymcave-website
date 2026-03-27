@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './Navbar.module.css';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -21,12 +21,19 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  // Close menu on scroll
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close menu when route changes
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
+
+  // Lock body scroll when menu is open
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
@@ -61,9 +68,9 @@ export default function Navbar() {
             <button
               className={`${styles.hamburger} ${mobileOpen ? styles.open : ''}`}
               onClick={() => setMobileOpen(!mobileOpen)}
-              aria-label="Toggle menu"
+              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             >
-              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+              {mobileOpen ? <X size={22} strokeWidth={1} /> : <Menu size={22} strokeWidth={1} />}
             </button>
           </div>
         </div>
@@ -74,29 +81,56 @@ export default function Navbar() {
         {mobileOpen && (
           <motion.div
             className={styles.mobileOverlay}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
-            <motion.div className={styles.mobileMenu}>
+            <div className={styles.mobileHeader}>
+              <Link href="/" className={styles.logo} onClick={() => setMobileOpen(false)}>
+                <img src="/images/Group 3.svg" alt="GymCave" className={styles.logoImg} />
+              </Link>
+              <button
+                className={styles.hamburger}
+                onClick={() => setMobileOpen(false)}
+                aria-label="Close menu"
+              >
+                <X size={22} strokeWidth={1} />
+              </button>
+            </div>
+
+            <div className={styles.mobileMenu}>
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.href}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 + i * 0.08, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 + i * 0.05, duration: 0.4 }}
+                  className={styles.mobileLinkWrap}
                 >
                   <Link
                     href={link.href}
-                    className={`${styles.mobileLink} ${pathname === link.href ? styles.active : ''}`}
+                    className={`${styles.mobileLink} ${pathname === link.href ? styles.mobileLinkActive : ''}`}
                     onClick={() => setMobileOpen(false)}
                   >
                     {link.label}
                   </Link>
                 </motion.div>
               ))}
-            </motion.div>
+
+              {/* CTA */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.4 }}
+                className={styles.mobileCtaWrap}
+              >
+                <Link href="/contact" className={styles.mobileCta} onClick={() => setMobileOpen(false)}>
+                  Start Free Trial
+                  <ArrowRight size={16} strokeWidth={2} />
+                </Link>
+              </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

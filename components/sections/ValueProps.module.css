@@ -40,7 +40,7 @@
 .statNumber {
   font-size: 32px;
   font-weight: 700;
-  color: var(--accent-lime);
+  color: var(--text-primary);
   font-family: var(--font-heading);
 }
 
@@ -64,8 +64,8 @@
 }
 
 .propCard {
-  background: var(--bg-carbon);
-  border: 1px solid var(--border-default);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
   padding: 30px;
   border-radius: var(--radius-lg);
   display: flex;
@@ -75,13 +75,13 @@
 }
 
 .propCard:hover {
-  border-color: var(--accent-lime);
+  border-color: var(--text-primary);
   background: rgba(255, 255, 255, 0.02);
 }
 
 .propIcon {
-  color: var(--accent-lime);
-  background: var(--accent-lime-dim);
+  color: var(--text-primary);
+  background: var(--bg-elevated);
   width: 48px;
   height: 48px;
   border-radius: var(--radius-md);

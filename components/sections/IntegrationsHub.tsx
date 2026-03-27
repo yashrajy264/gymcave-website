@@ -1,6 +1,6 @@
-import { useEffect, useRef } from 'react';
+'use client';
+
 import { motion } from 'framer-motion';
-import gsap from 'gsap';
 import styles from './IntegrationsHub.module.css';
 
 interface IntegrationsHubProps {
@@ -8,37 +8,8 @@ interface IntegrationsHubProps {
 }
 
 export default function IntegrationsHub({ integrations }: IntegrationsHubProps) {
-  const hubRef = useRef<HTMLDivElement>(null);
-  const ringRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!hubRef.current || !ringRef.current) return;
-
-    // Continuous rotation for the ring
-    const rotation = gsap.to(ringRef.current, {
-      rotation: 360,
-      duration: 40,
-      repeat: -1,
-      ease: 'none',
-    });
-
-    // Pulse effect for the center
-    gsap.to(`.${styles.hubPulse}`, {
-      scale: 1.3,
-      opacity: 0,
-      duration: 2,
-      repeat: -1,
-      ease: 'sine.inOut',
-      stagger: 0.5,
-    });
-
-    return () => {
-      rotation.kill();
-    };
-  }, []);
-
   return (
-    <section className="section" ref={hubRef}>
+    <section className="section">
       <div className="container">
         <motion.div
           className={styles.sectionHeader}
@@ -50,31 +21,29 @@ export default function IntegrationsHub({ integrations }: IntegrationsHubProps) 
           <h2>Connects With Your Stack</h2>
         </motion.div>
 
-        <div className={styles.integrationsHub}>
-          <div className={styles.hubCenter}>
-            <span>GYMCAVE</span>
-            <div className={styles.hubPulse} />
-            <div className={styles.hubPulse} />
-          </div>
-          <div className={styles.hubRing} ref={ringRef}>
-            {integrations.map((int, i) => {
-              const angle = i * (360 / integrations.length);
-              return (
-                <div
-                  key={int}
-                  className={styles.hubNode}
-                  style={{
-                    transform: `rotate(${angle}deg) translate(clamp(110px, 15vw, 150px)) rotate(-${angle}deg)`,
-                  }}
-                >
-                  <div className={styles.nodeInner}>
-                    {int}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+        <motion.div 
+          className={styles.grid}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-40px' }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+          }}
+        >
+          {integrations.map((int) => (
+            <motion.div 
+              key={int}
+              className={styles.card}
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 }
+              }}
+            >
+              {int}
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

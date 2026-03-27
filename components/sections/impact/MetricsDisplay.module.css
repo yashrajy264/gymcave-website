@@ -1,6 +1,6 @@
 .section {
   padding: var(--space-10) 0;
-  background: var(--bg-void);
+  background: var(--bg-primary);
 }
 
 .grid {
@@ -22,7 +22,7 @@
 
 .metricCard {
   background: var(--bg-elevated);
-  border: 1px solid var(--border-default);
+  border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: var(--space-6);
   text-align: center;
@@ -40,7 +40,7 @@
 }
 
 .label {
-  color: var(--accent-lime);
+  color: var(--text-primary);
   font-weight: 600;
   font-size: 14px;
   text-transform: uppercase;

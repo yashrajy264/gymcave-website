@@ -1,6 +1,6 @@
 .section {
   padding: var(--space-10) 0;
-  background-color: var(--bg-carbon);
+  background-color: var(--bg-elevated);
 }
 
 .header {
@@ -19,8 +19,8 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--border-default);
-  border-left: 1px solid var(--border-default);
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
 }
 
 @media (max-width: 860px) {
@@ -37,17 +37,20 @@
 
 .card {
   padding: var(--space-6);
-  border-right: 1px solid var(--border-default);
-  border-bottom: 1px solid var(--border-default);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
-  transition: border-color var(--duration-normal);
+  background-color: transparent;
+  transition: border-color var(--duration-normal), background-color var(--duration-normal), transform var(--duration-fast);
 }
 
 .card:hover {
   border-right-color: var(--border-hover);
   border-bottom-color: var(--border-hover);
+  background-color: var(--bg-primary);
+  transform: translateY(-2px);
 }
 
 .iconBox {
@@ -56,18 +59,18 @@
   justify-content: center;
   width: 36px;
   height: 36px;
-  border: 1px solid var(--border-default);
+  border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  background-color: var(--bg-elevated);
+  background-color: var(--bg-primary);
   transition: border-color var(--duration-fast);
 }
 
 .card:hover .iconBox {
-  border-color: var(--border-hover);
+  border-color: var(--border-accent);
 }
 
 .icon {
-  color: var(--accent-lime);
+  color: var(--accent);
 }
 
 .cardTitle {

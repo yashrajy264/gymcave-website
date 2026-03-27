@@ -10,7 +10,7 @@
   background: rgba(10, 10, 15, 0.65);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid var(--border-default);
+  border: 1px solid var(--border);
   transition: all var(--duration-normal) var(--ease-out-expo);
 }
 
@@ -63,8 +63,8 @@
 }
 
 .link.active {
-  color: var(--accent-lime);
-  background: var(--accent-lime-dim);
+  color: var(--text-primary);
+  background: var(--bg-elevated);
 }
 
 /* Hamburger */
@@ -87,32 +87,73 @@
 .mobileOverlay {
   position: fixed;
   inset: 0;
-  z-index: 999;
-  background: rgba(10, 10, 15, 0.98);
-  backdrop-filter: blur(40px);
+  z-index: 9999;
+  background-color: var(--bg-primary); 
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.mobileHeader {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 8px;
+  margin-bottom: var(--space-8);
 }
 
 .mobileMenu {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: var(--space-6);
+  gap: var(--space-4);
+  padding: 0 var(--space-4);
+  flex: 1;
+}
+
+.mobileLinkWrap {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: var(--space-4);
 }
 
 .mobileLink {
   font-family: var(--font-heading);
-  font-size: 36px;
-  font-weight: 700;
+  font-size: 28px;
+  font-weight: 500;
   color: var(--text-secondary);
-  transition: color var(--duration-fast) ease;
+  text-decoration: none;
+  display: block;
+  transition: color 0.2s ease;
 }
 
 .mobileLink:hover,
-.mobileLink.active {
-  color: var(--accent-lime);
+.mobileLinkActive {
+  color: var(--text-primary);
+}
+
+.mobileCtaWrap {
+  margin-top: auto;
+  padding-bottom: var(--space-8);
+}
+
+.mobileCta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 8px;
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  font-size: 16px;
+  font-weight: 600;
+  padding: 16px;
+  border-radius: var(--radius-pill);
+  transition: opacity 0.2s ease;
+}
+
+.mobileCta:hover {
+  opacity: 0.9;
 }
 
 @media (max-width: 767px) {
@@ -125,11 +166,22 @@
   }
 
   .navbar {
-    max-width: calc(100% - 32px);
+    width: auto;
+    max-width: max-content;
+    right: 16px;
+    left: auto;
+    transform: none;
+    background: rgba(10, 10, 15, 0.75);
   }
 
   .scrolled {
-    max-width: calc(100% - 32px);
+    max-width: max-content;
+    background: rgba(10, 10, 15, 0.95);
+  }
+
+  .inner {
+    padding: 0 var(--space-3) 0 var(--space-4);
+    gap: var(--space-6);
   }
 }
 

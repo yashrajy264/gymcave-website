@@ -1,7 +1,7 @@
 .section {
   padding: var(--space-20) 0;
   background: var(--bg-black);
-  border-top: 1px solid var(--border-default);
+  border-top: 1px solid var(--border);
   overflow: hidden;
 }
 
@@ -18,7 +18,7 @@
   background: rgba(200, 255, 0, 0.05);
   border: 1px solid rgba(200, 255, 0, 0.15);
   border-radius: 100px;
-  color: var(--accent-lime);
+  color: var(--text-primary);
   font-size: 13px;
   font-weight: 600;
   margin-bottom: var(--space-4);
@@ -31,8 +31,8 @@
   max-width: 1000px;
   margin: 0 auto;
   border-radius: var(--radius-xl);
-  border: 1px solid var(--border-default);
-  background: var(--bg-carbon);
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
   box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.82);
   transform-origin: center;
 }
@@ -40,7 +40,7 @@
 .browserHeader {
   height: 44px;
   background: #111;
-  border-bottom: 1px solid var(--border-default);
+  border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
   padding: 0 16px;
@@ -56,7 +56,7 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: var(--border-default);
+  background: var(--border);
 }
 
 .browserDots span:nth-child(1) { background: #ff5f56; }
@@ -102,8 +102,8 @@
 }
 
 .statCard {
-  background: var(--bg-carbon);
-  border: 1px solid var(--border-default);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
   backdrop-filter: blur(12px);
   padding: 20px;
   border-radius: var(--radius-lg);
@@ -115,7 +115,7 @@
 }
 
 .statIcon {
-  color: var(--accent-lime);
+  color: var(--text-primary);
   margin-bottom: 8px;
 }
 

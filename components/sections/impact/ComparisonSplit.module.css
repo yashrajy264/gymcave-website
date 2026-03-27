@@ -1,6 +1,6 @@
 .section {
   padding: var(--space-10) 0;
-  background: var(--bg-carbon);
+  background: var(--bg-elevated);
 }
 
 .header {
@@ -12,17 +12,17 @@
 .table {
   max-width: 1000px;
   margin: 0 auto;
-  border: 1px solid var(--border-default);
+  border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background: var(--bg-void);
+  background: var(--bg-primary);
 }
 
 .row {
   display: grid;
   grid-template-columns: 200px 1fr 1fr;
   align-items: center;
-  border-bottom: 1px solid var(--border-default);
+  border-bottom: 1px solid var(--border);
 }
 
 .row:last-child {
@@ -50,18 +50,18 @@
 }
 
 .newHeader {
-  color: var(--accent-lime);
+  color: var(--text-primary);
 }
 
 .categoryCell {
   font-weight: 600;
   color: var(--text-primary);
-  border-right: 1px solid var(--border-default);
+  border-right: 1px solid var(--border);
 }
 
 .oldCell {
   color: var(--text-secondary);
-  border-right: 1px solid var(--border-default);
+  border-right: 1px solid var(--border);
   background: rgba(255, 107, 53, 0.02); /* subtle red/orange tint */
 }
 
@@ -76,7 +76,7 @@
 }
 
 .iconNew {
-  color: var(--accent-lime);
+  color: var(--text-primary);
   flex-shrink: 0;
 }
 
@@ -89,7 +89,7 @@
 
   .categoryCell {
     border-right: none;
-    border-bottom: 1px solid var(--border-default);
+    border-bottom: 1px solid var(--border);
     width: 100%;
     background: var(--bg-elevated);
   }

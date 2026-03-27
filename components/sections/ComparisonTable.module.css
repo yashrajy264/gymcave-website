@@ -10,8 +10,8 @@
 .tableWrap {
   overflow-x: auto;
   border-radius: var(--radius-xl);
-  border: 1px solid var(--border-default);
-  background: var(--bg-carbon);
+  border: 1px solid var(--border);
+  background: var(--bg-primary);
 }
 
 .table {
@@ -24,7 +24,7 @@
 .table td {
   padding: 16px 24px;
   text-align: center;
-  border-bottom: 1px solid var(--border-default);
+  border-bottom: 1px solid var(--border);
   font-size: 14px;
 }
 
@@ -48,15 +48,15 @@
 }
 
 .table tbody tr:hover {
-  background: rgba(200, 255, 0, 0.02);
+  background: var(--bg-elevated);
 }
 
 .highlight {
-  background: rgba(200, 255, 0, 0.04) !important;
+  background: var(--bg-elevated) !important;
 }
 
 .check {
-  color: var(--accent-lime);
+  color: var(--accent);
   font-size: 18px;
   font-weight: 700;
 }
@@ -67,6 +67,6 @@
 }
 
 .partial {
-  color: var(--urgency-orange);
+  color: var(--text-muted);
   font-size: 18px;
 }

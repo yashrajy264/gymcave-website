@@ -11,7 +11,7 @@
 .heroGradient {
   position: absolute;
   inset: 0;
-  background: var(--gradient-hero);
+  background: transparent;
   z-index: -1;
 }
 

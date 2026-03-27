@@ -1,8 +1,8 @@
 .section {
   padding: var(--space-10) 0;
-  background-color: var(--bg-void);
-  border-top: 1px solid var(--border-default);
-  border-bottom: 1px solid var(--border-default);
+  background-color: var(--bg-primary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 .block {
@@ -13,7 +13,7 @@
 }
 
 .quoteMarkWrap {
-  color: var(--accent-lime);
+  color: var(--accent);
   opacity: 0.6;
 }
 
@@ -32,7 +32,7 @@
   flex-direction: column;
   gap: 4px;
   padding-top: var(--space-4);
-  border-top: 1px solid var(--border-default);
+  border-top: 1px solid var(--border);
 }
 
 .name {

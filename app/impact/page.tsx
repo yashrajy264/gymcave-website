@@ -1,6 +1,5 @@
 import ImpactHero from '@/components/sections/impact/ImpactHero';
 import ComparisonSplit from '@/components/sections/impact/ComparisonSplit';
-import MetricsDisplay from '@/components/sections/impact/MetricsDisplay';
 import CTABanner from '@/components/sections/CTABanner';
 
 export const metadata = {
@@ -13,7 +12,6 @@ export default function ImpactPage() {
     <>
       <ImpactHero />
       <ComparisonSplit />
-      <MetricsDisplay />
       <CTABanner />
     </>
   );

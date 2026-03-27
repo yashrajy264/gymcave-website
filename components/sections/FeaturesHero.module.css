@@ -11,7 +11,7 @@
 .heroGradient {
   position: absolute;
   inset: 0;
-  background: var(--gradient-hero);
+  background: var(--bg-primary);
   z-index: -1;
 }
 
@@ -38,7 +38,7 @@
   font-weight: 500;
   padding: 10px 20px;
   border-radius: var(--radius-pill);
-  border: 1px solid var(--border-default);
+  border: 1px solid var(--border);
   background: transparent;
   color: var(--text-secondary);
   cursor: pointer;
@@ -51,23 +51,35 @@
 }
 
 .tabActive {
-  background: var(--accent-lime);
-  color: #0A0A0F;
-  border-color: var(--accent-lime);
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border-color: var(--text-primary);
   font-weight: 600;
 }
 
 .tabActive:hover {
-  color: #0A0A0F;
+  color: var(--bg-primary);
 }
 
 @media (max-width: 767px) {
   .tabs {
-    gap: var(--space-1);
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: var(--space-2);
+    width: 100vw;
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  }
+  
+  .tabs::-webkit-scrollbar { 
+    display: none; /* WebKit */
   }
 
   .tab {
-    font-size: 12px;
-    padding: 8px 14px;
+    flex-shrink: 0;
   }
 }

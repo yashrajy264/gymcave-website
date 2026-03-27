@@ -1,13 +1,11 @@
 .footer {
-  background: var(--bg-carbon);
-  padding-top: 0;
+  background: transparent;
+  padding-top: var(--space-8);
   position: relative;
 }
 
 .divider {
-  height: 1px;
-  background: var(--gradient-divider);
-  margin-bottom: var(--space-8);
+  display: none;
 }
 
 .inner {
@@ -50,7 +48,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 1px solid var(--border-default);
+  border: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -61,9 +59,9 @@
 }
 
 .socialIcon:hover {
-  color: var(--accent-lime);
-  border-color: var(--border-hover);
-  background: var(--accent-lime-dim);
+  color: var(--text-primary);
+  border-color: var(--text-primary);
+  background: var(--bg-elevated);
 }
 
 .column {
@@ -98,7 +96,7 @@
 }
 
 .bottom {
-  border-top: 1px solid var(--border-default);
+  border-top: 1px solid var(--border);
   padding: var(--space-5) var(--space-5);
   display: flex;
   justify-content: center;

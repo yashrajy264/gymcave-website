@@ -7,15 +7,15 @@
 }
 
 .item {
-  background: var(--bg-carbon);
-  border: 1px solid var(--border-default);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   overflow: hidden;
   transition: border-color var(--duration-fast) ease;
 }
 
 .item.active {
-  border-left: 3px solid var(--accent-lime);
+  border-left: 3px solid var(--text-primary);
 }
 
 .trigger {

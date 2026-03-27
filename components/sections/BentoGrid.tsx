@@ -52,7 +52,7 @@ export default function BentoGrid() {
             return (
               <motion.div key={f.title} className={styles.card} variants={item}>
                 <div className={styles.iconBox}>
-                  <Icon size={18} strokeWidth={1.75} className={styles.icon} />
+                  <Icon size={18} strokeWidth={1} className={styles.icon} />
                 </div>
                 <h4 className={styles.cardTitle}>{f.title}</h4>
                 <p className={styles.cardDesc}>{f.desc}</p>

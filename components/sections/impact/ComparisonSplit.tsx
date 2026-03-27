@@ -104,11 +104,11 @@ export default function ComparisonSplit() {
                 {item.category}
               </div>
               <div className={`${styles.cell} ${styles.oldCell}`}>
-                <XCircle size={18} className={styles.iconOld} />
+                <XCircle size={18} className={styles.iconOld} strokeWidth={1} />
                 <span>{item.old}</span>
               </div>
               <div className={`${styles.cell} ${styles.newCell}`}>
-                <CheckCircle size={18} className={styles.iconNew} />
+                <CheckCircle size={18} className={styles.iconNew} strokeWidth={1} />
                 <span>{item.new}</span>
               </div>
             </div>

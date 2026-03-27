@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import styles from './Button.module.css';
 
 interface ButtonProps {
@@ -37,15 +38,16 @@ export default function Button({
 
   if (href) {
     return (
-      <motion.a
-        href={href}
-        className={classes}
-        whileHover={{ scale: 1.03 }}
-        whileTap={{ scale: 0.97 }}
-        transition={{ duration: 0.2 }}
-      >
-        {inner}
-      </motion.a>
+      <Link href={href}>
+        <motion.span
+          className={`${classes} ${styles.linkSpan}`}
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
+          transition={{ duration: 0.2 }}
+        >
+          {inner}
+        </motion.span>
+      </Link>
     );
   }
 

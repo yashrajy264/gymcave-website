@@ -23,8 +23,8 @@
   width: 100%;
   height: 56px;
   padding: 20px 16px 8px;
-  background: var(--bg-subtle);
-  border: 1px solid var(--border-default);
+  background: transparent;
+  border: 1px solid var(--border);
   border-radius: var(--radius-md);
   color: var(--text-primary);
   font-size: 15px;
@@ -51,13 +51,13 @@
 }
 
 .select option {
-  background: var(--bg-carbon);
+  background: var(--bg-elevated);
   color: var(--text-primary);
 }
 
 .input:focus {
-  border-color: var(--accent-lime);
-  box-shadow: 0 0 0 3px rgba(200, 255, 0, 0.1);
+  border-color: var(--text-primary);
+  box-shadow: none;
 }
 
 .fieldError .input {
@@ -96,7 +96,7 @@
   top: 8px;
   transform: none;
   font-size: 11px;
-  color: var(--accent-lime);
+  color: var(--text-primary);
 }
 
 .input:focus ~ .label,
@@ -104,7 +104,7 @@
   top: 8px;
   transform: none;
   font-size: 11px;
-  color: var(--accent-lime);
+  color: var(--text-primary);
 }
 
 .fieldError .input:focus ~ .label,
@@ -153,8 +153,8 @@
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: var(--accent-lime);
-  color: #0A0A0F;
+  background: var(--text-primary);
+  color: var(--bg-primary);
   font-size: 36px;
   font-weight: 700;
   display: flex;
@@ -178,8 +178,8 @@
 }
 
 .infoCard {
-  background: var(--bg-carbon);
-  border: 1px solid var(--border-default);
+  background: transparent;
+  border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   padding: 32px;
   display: flex;
@@ -204,15 +204,11 @@
 }
 
 .infoIcon {
-  font-size: 20px;
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-sm);
-  background: var(--accent-lime-dim);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 20px;
+  height: 20px;
+  color: var(--accent);
   flex-shrink: 0;
+  margin-top: 2px;
 }
 
 .infoLabel {
@@ -233,14 +229,14 @@
   display: flex;
   gap: var(--space-3);
   padding-top: var(--space-3);
-  border-top: 1px solid var(--border-default);
+  border-top: 1px solid var(--border);
 }
 
 .socialBtn {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 1px solid var(--border-default);
+  border: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -252,14 +248,14 @@
 }
 
 .socialBtn:hover {
-  color: var(--accent-lime);
-  border-color: var(--border-hover);
-  background: var(--accent-lime-dim);
+  color: var(--text-primary);
+  border-color: var(--text-primary);
+  background: var(--bg-elevated);
 }
 
 .mapPlaceholder {
-  background: var(--bg-carbon);
-  border: 1px solid var(--border-default);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   height: 200px;
   display: flex;

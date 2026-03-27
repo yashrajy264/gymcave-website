@@ -1,0 +1,18 @@
+.desktopView {
+  display: block;
+}
+
+.mobileView {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .desktopView {
+    display: none;
+  }
+  .mobileView {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}

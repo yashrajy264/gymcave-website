@@ -1,0 +1,17 @@
+.wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.line {
+  display: block;
+  white-space: normal;
+  word-break: keep-all;
+  line-height: 1.05;
+}

@@ -7,103 +7,32 @@
   gap: var(--space-3);
 }
 
-.integrationsHub {
-  position: relative;
-  width: 360px;
-  height: 360px;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: var(--space-4);
+  max-width: 800px;
   margin: 0 auto;
 }
 
-.hubCenter {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  background: var(--bg-carbon);
-  border: 2px solid var(--accent-lime);
+.card {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2;
-}
-
-.hubCenter span {
-  font-family: var(--font-heading);
-  font-size: 11px;
-  font-weight: 800;
-  color: var(--accent-lime);
-  letter-spacing: 0.05em;
-}
-
-.hubPulse {
-  position: absolute;
-  inset: -8px;
-  border-radius: 50%;
-  border: 1px solid rgba(200, 255, 0, 0.2);
-  animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); opacity: 0.5; }
-  50% { transform: scale(1.2); opacity: 0; }
-}
-
-.hubRing {
-  position: absolute;
-  inset: 0;
-}
-
-.hubNode {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100px;
-  height: 44px;
-  margin-top: -22px;
-  margin-left: -50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1;
-}
-
-.nodeInner {
-  width: 100%;
-  height: 100%;
-  border-radius: var(--radius-pill);
-  background: var(--bg-carbon);
-  border: 1px solid var(--border-default);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  font-weight: 600;
+  padding: var(--space-4) var(--space-5);
+  background-color: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 500;
   color: var(--text-secondary);
-  box-shadow: var(--shadow-sm);
-  transition: all 0.3s ease;
-  white-space: nowrap;
-  padding: 0 12px;
+  transition: all var(--duration-fast);
+  cursor: default;
 }
 
-.nodeInner:hover {
-  border-color: var(--accent-lime);
-  color: var(--accent-lime);
-  transform: scale(1.1);
-  box-shadow: 0 0 20px rgba(200, 255, 0, 0.2);
-}
-
-@media (max-width: 767px) {
-  .integrationsHub {
-    width: 300px;
-    height: 300px;
-  }
-
-  .hubNode {
-    font-size: 10px;
-    width: 70px;
-    height: 34px;
-  }
+.card:hover {
+  border-color: var(--text-primary);
+  color: var(--text-primary);
+  transform: translateY(-2px);
+  background-color: var(--bg-primary);
 }

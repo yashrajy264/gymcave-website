@@ -2,11 +2,12 @@
 
 import { motion } from 'framer-motion';
 import styles from './Values.module.css';
+import { Target, Lightbulb, Handshake } from 'lucide-react';
 
 const values = [
-  { icon: '🎯', title: 'Simplify Complexity', desc: 'We distill gym operations into intuitive workflows that anyone can master in minutes.' },
-  { icon: '💡', title: 'Innovate Daily', desc: 'AI-powered tools that get smarter with your gym — from barcode scanning to predictive analytics.' },
-  { icon: '🤝', title: 'Empower Fitness', desc: 'Bridging the gap between gym owners and members with seamless communication.' },
+  { icon: <Target className={styles.valueIcon} size={28} strokeWidth={1} />, title: 'Simplify Complexity', desc: 'We distill gym operations into intuitive workflows that anyone can master in minutes.' },
+  { icon: <Lightbulb className={styles.valueIcon} size={28} strokeWidth={1} />, title: 'Innovate Daily', desc: 'AI-powered tools that get smarter with your gym — from barcode scanning to predictive analytics.' },
+  { icon: <Handshake className={styles.valueIcon} size={28} strokeWidth={1} />, title: 'Empower Fitness', desc: 'Bridging the gap between gym owners and members with seamless communication.' },
 ];
 
 export default function Values() {
@@ -34,7 +35,7 @@ export default function Values() {
               transition={{ delay: i * 0.1 }}
               whileHover={{ y: -4 }}
             >
-              <span className={styles.valueIcon}>{v.icon}</span>
+              <div className={styles.valueIconWrap}>{v.icon}</div>
               <h3>{v.title}</h3>
               <p>{v.desc}</p>
             </motion.div>

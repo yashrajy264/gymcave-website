@@ -1,34 +1,28 @@
 'use client';
 
 import Link from 'next/link';
-import { Twitter, Instagram, Linkedin, Github } from 'lucide-react';
+import { Instagram, Linkedin } from 'lucide-react';
 import styles from './Footer.module.css';
 
 const footerLinks = {
   Product: [
     { label: 'Features', href: '/features' },
     { label: 'Pricing', href: '/pricing' },
-    { label: 'Integrations', href: '#' },
-    { label: 'Changelog', href: '#' },
   ],
   Company: [
     { label: 'About', href: '/about' },
-    { label: 'Blog', href: '#' },
-    { label: 'Careers', href: '#' },
+    { label: 'Careers', href: 'https://www.linkedin.com/company/gymcave' },
     { label: 'Contact', href: '/contact' },
   ],
   Legal: [
-    { label: 'Privacy', href: '#' },
-    { label: 'Terms', href: '#' },
-    { label: 'Cookie Policy', href: '#' },
+    { label: 'Privacy', href: '/privacy-policy' },
+    { label: 'Terms', href: '/terms' },
   ],
 };
 
 const socials = [
-  { label: 'Twitter', icon: <Twitter size={18} />, href: '#' },
-  { label: 'Instagram', icon: <Instagram size={18} />, href: '#' },
-  { label: 'LinkedIn', icon: <Linkedin size={18} />, href: '#' },
-  { label: 'GitHub', icon: <Github size={18} />, href: '#' },
+  { label: 'Instagram', icon: <Instagram size={18} strokeWidth={1} />, href: 'https://instagram.com/gymcave' },
+  { label: 'LinkedIn', icon: <Linkedin size={18} strokeWidth={1} />, href: 'https://www.linkedin.com/company/gymcave' },
 ];
 
 export default function Footer() {

@@ -13,6 +13,12 @@
   text-decoration: none;
 }
 
+/* When button is rendered inside a Next.js Link */
+.linkSpan {
+  display: inline-flex;
+}
+
+
 .label {
   position: relative;
 }
@@ -47,9 +53,9 @@
 }
 
 .secondary:hover {
-  border-color: var(--accent-lime);
-  color: var(--accent-lime);
-  background: var(--accent-lime-dim);
+  border-color: var(--text-primary);
+  color: var(--text-primary);
+  background: var(--bg-elevated);
 }
 
 /* Ghost */

@@ -9,7 +9,7 @@ export default function AppPreview() {
       <div className="container">
         <div className={styles.header}>
           <div className={styles.badge}>
-            <PieChart size={14} />
+            <PieChart size={14} strokeWidth={1} />
             <span>Advanced Analytics</span>
           </div>
           <h2 className="h2">Decisions backed by data.</h2>
@@ -49,12 +49,12 @@ export default function AppPreview() {
           
           <div className={styles.floatingStats}>
             <div className={styles.statCard}>
-              <BarChart3 className={styles.statIcon} />
+              <BarChart3 className={styles.statIcon} strokeWidth={1} />
               <div className={styles.statValue}>+24%</div>
               <div className={styles.statLabel}>Monthly Growth</div>
             </div>
             <div className={styles.statCard}>
-              <LineChart className={styles.statIcon} />
+              <LineChart className={styles.statIcon} strokeWidth={1} />
               <div className={styles.statValue}>98%</div>
               <div className={styles.statLabel}>Retention Rate</div>
             </div>

@@ -1,9 +1,8 @@
-import { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import styles from './Team.module.css';
+'use client';
 
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import styles from './Team.module.css';
 import Image from 'next/image';
 
 const team = [
@@ -17,7 +16,7 @@ const team = [
   { 
     id: 'adarsh',
     name: 'Adarsh Jain', 
-    role: 'Founder & Technical Head / COO', 
+    role: 'Founder & Operations Head', 
     image: '/images/Adarsh Jain.png',
     bio: 'Chief of Operations with a robust background in health studies and pharmaceuticals. Drives the technical architecture and operational efficiency of the platform.'
   },
@@ -30,56 +29,64 @@ const team = [
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: [0.16, 1, 0.3, 1] as const,
+    },
+  },
+};
+
 export default function Team() {
-  const containerRef = useRef<HTMLDivElement>(null);
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (!containerRef.current) return;
-    gsap.registerPlugin(ScrollTrigger);
-
-    const cards = containerRef.current.querySelectorAll(`.${styles.teamCard}`);
-    
-
-    // Reveal animation
-    gsap.from(cards, {
-      opacity: 0,
-      y: 40,
-      duration: 0.8,
-      stagger: 0.1,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: 'top 80%',
-      }
-    });
-  }, []);
-
   return (
-    <section className="section" ref={containerRef}>
+    <section className="section">
       <div className="container">
         <motion.div
           className={styles.sectionHeader}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
           <span className="overline">Our Team</span>
           <h2>The People Behind GymCave</h2>
         </motion.div>
 
-        <div className={styles.teamGrid}>
+        <motion.div 
+          className={styles.teamGrid}
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-50px' }}
+        >
           {team.map((member) => (
             <motion.div
               layout
               key={member.id}
+              variants={cardVariants}
               className={`${styles.teamCard} ${expandedId === member.id ? styles.expanded : ''}`}
               onClick={() => setExpandedId(expandedId === member.id ? null : member.id)}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
               <motion.div layout className={styles.teamAvatar}>
-                <Image src={member.image} alt={member.name} fill className={styles.teamImage} />
+                <Image src={member.image} alt={member.name} fill className={styles.teamImage} sizes="140px" />
               </motion.div>
               <div className={styles.teamInfo}>
                 <motion.h4 layout className={styles.teamName}>{member.name}</motion.h4>
@@ -107,7 +114,7 @@ export default function Team() {
               </motion.div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

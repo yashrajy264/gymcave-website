@@ -57,12 +57,12 @@ export default function Pricing() {
             </div>
 
             <ul className={styles.features}>
-              <li className={styles.feature}><Check className={styles.icon} size={20} /> Perpetual software license</li>
-              <li className={styles.feature}><Check className={styles.icon} size={20} /> Comprehensive white-glove onboarding</li>
-              <li className={styles.feature}><Check className={styles.icon} size={20} /> Custom branded native app</li>
-              <li className={styles.feature}><Check className={styles.icon} size={20} /> Priority 24/7 dedicated support</li>
-              <li className={styles.feature}><Check className={styles.icon} size={20} /> Unlimited staff and member accounts</li>
-              <li className={styles.feature}><Check className={styles.icon} size={20} /> Free regular maintenance and server costs</li>
+              <li className={styles.feature}><Check className={styles.icon} size={20} strokeWidth={1} /> Perpetual software license</li>
+              <li className={styles.feature}><Check className={styles.icon} size={20} strokeWidth={1} /> Comprehensive white-glove onboarding</li>
+              <li className={styles.feature}><Check className={styles.icon} size={20} strokeWidth={1} /> Custom branded native app</li>
+              <li className={styles.feature}><Check className={styles.icon} size={20} strokeWidth={1} /> Priority 24/7 dedicated support</li>
+              <li className={styles.feature}><Check className={styles.icon} size={20} strokeWidth={1} /> Unlimited staff and member accounts</li>
+              <li className={styles.feature}><Check className={styles.icon} size={20} strokeWidth={1} /> Free regular maintenance and server costs</li>
             </ul>
 
             <button className={`${styles.cta} ${styles.ctaPrimary}`}>Get Dedicated License</button>

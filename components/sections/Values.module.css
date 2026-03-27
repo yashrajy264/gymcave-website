@@ -14,18 +14,19 @@
 }
 
 .valueCard {
-  background: var(--bg-carbon);
-  border: 1px solid var(--border-default);
+  background: transparent;
+  border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   padding: 40px;
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
-  transition: border-color 0.3s ease;
+  transition: all var(--duration-fast) ease;
 }
 
 .valueCard:hover {
-  border-color: var(--border-hover);
+  border-color: var(--text-primary);
+  background: var(--bg-elevated);
 }
 
 .valueIcon {

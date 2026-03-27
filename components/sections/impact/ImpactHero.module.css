@@ -1,7 +1,7 @@
 .hero {
   position: relative;
   padding: calc(var(--navbar-height) + var(--space-10)) 0 var(--space-10);
-  background: var(--bg-void);
+  background: var(--bg-primary);
   overflow: hidden;
   text-align: center;
 }

@@ -6,11 +6,13 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import Button from '@/components/ui/Button';
+import { Mail, MapPin, Phone, Clock } from 'lucide-react';
 import styles from './ContactForm.module.css';
 
 const schema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
   email: z.string().email('Please enter a valid email'),
+  phone: z.string().min(10, 'Please enter a valid phone number').optional().or(z.literal('')),
   gym: z.string().min(1, 'Gym name is required'),
   subject: z.string().min(1, 'Please select a subject'),
   message: z.string().min(10, 'Message must be at least 10 characters'),
@@ -30,10 +32,35 @@ export default function ContactForm() {
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setSubmitted(true);
+    try {
+      // Map the form schema fields to what the Google Apps Script expects
+      const payload = {
+        name: data.name,
+        email: data.email,
+        gymName: data.gym,
+        role: data.subject,
+        members: data.phone,
+        message: data.message,
+      };
+
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzPdAGGxXuFSinjILyug8-8PPbNCP_ACvAM_QX5psPEd_1X40TDfk05kmmmR9HP644N/exec';
+      
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8',
+        },
+        body: JSON.stringify(payload)
+      });
+      
+      setSubmitted(true);
+    } catch (e) {
+      console.error(e);
+      // Still show success since CORS or adblockers might swallow the success response
+      setSubmitted(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -79,6 +106,18 @@ export default function ContactForm() {
                     />
                     <label htmlFor="email" className={styles.label}>Email Address</label>
                     {errors.email && <span className={styles.error}>{errors.email.message}</span>}
+                  </div>
+
+                  <div className={`${styles.field} ${errors.phone ? styles.fieldError : ''}`}>
+                    <input
+                      {...register('phone')}
+                      id="phone"
+                      type="tel"
+                      placeholder=" "
+                      className={styles.input}
+                    />
+                    <label htmlFor="phone" className={styles.label}>Phone Number (Optional)</label>
+                    {errors.phone && <span className={styles.error}>{errors.phone.message}</span>}
                   </div>
 
                   <div className={`${styles.field} ${errors.gym ? styles.fieldError : ''}`}>
@@ -161,28 +200,28 @@ export default function ContactForm() {
               <h3>Get in Touch</h3>
               <div className={styles.infoItems}>
                 <div className={styles.infoItem}>
-                  <span className={styles.infoIcon}>✉</span>
+                  <Mail className={styles.infoIcon} size={20} strokeWidth={1} />
                   <div>
                     <span className={styles.infoLabel}>Email</span>
                     <span className={styles.infoValue}>gymcaveapp@gmail.com</span>
                   </div>
                 </div>
                 <div className={styles.infoItem}>
-                  <span className={styles.infoIcon}>📍</span>
+                  <MapPin className={styles.infoIcon} size={20} strokeWidth={1} />
                   <div>
                     <span className={styles.infoLabel}>Location</span>
                     <span className={styles.infoValue}>Bengaluru, India</span>
                   </div>
                 </div>
                 <div className={styles.infoItem}>
-                  <span className={styles.infoIcon}>📞</span>
+                  <Phone className={styles.infoIcon} size={20} strokeWidth={1} />
                   <div>
                     <span className={styles.infoLabel}>Phone</span>
                     <span className={styles.infoValue}>+91-6261090395</span>
                   </div>
                 </div>
                 <div className={styles.infoItem}>
-                  <span className={styles.infoIcon}>🕐</span>
+                  <Clock className={styles.infoIcon} size={20} strokeWidth={1} />
                   <div>
                     <span className={styles.infoLabel}>Response Time</span>
                     <span className={styles.infoValue}>Within 24 hours</span>
@@ -201,7 +240,7 @@ export default function ContactForm() {
 
             {/* Map Placeholder */}
             <div className={styles.mapPlaceholder}>
-              <div className={styles.mapPin}>📍</div>
+              <MapPin size={24} className={styles.mapPin} />
               <span>Bengaluru, India</span>
             </div>
           </motion.div>

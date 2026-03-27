@@ -3,22 +3,22 @@ import styles from './ValueProps.module.css';
 
 const props = [
   {
-    icon: <TrendingUp size={24} />,
+    icon: <TrendingUp size={24} strokeWidth={1} />,
     title: 'Increase Revenue',
     description: 'Our automated billing and renewal systems reduce churn by up to 35% in the first 6 months.',
   },
   {
-    icon: <Clock size={24} />,
+    icon: <Clock size={24} strokeWidth={1} />,
     title: 'Save 10+ Hours/Week',
     description: 'Automate tedious administrative tasks and spend more time on what matters — your members.',
   },
   {
-    icon: <Users2 size={24} />,
+    icon: <Users2 size={24} strokeWidth={1} />,
     title: 'Superior Experience',
     description: 'Give your members a premium mobile app that makes tracking workouts and booking classes a breeze.',
   },
   {
-    icon: <CheckCircle2 size={24} />,
+    icon: <CheckCircle2 size={24} strokeWidth={1} />,
     title: 'Scalable Infrastructure',
     description: 'Whether you have one gym or a hundred, our platform scales with you without the complexity.',
   },
@@ -26,7 +26,7 @@ const props = [
 
 export default function ValueProps() {
   return (
-    <section className="section" style={{ background: 'var(--bg-black)', borderTop: '1px solid var(--border-default)' }}>
+    <section className="section" style={{ background: 'var(--bg-black)', borderTop: '1px solid var(--border)' }}>
       <div className="container">
         <div className={styles.grid}>
           <div className={styles.intro}>

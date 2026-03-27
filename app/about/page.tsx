@@ -1,19 +1,16 @@
 'use client';
 
 import AboutHero from '@/components/sections/AboutHero';
+import BrandStory from '@/components/sections/BrandStory';
 import Values from '@/components/sections/Values';
-import Timeline from '@/components/sections/Timeline';
 import Team from '@/components/sections/Team';
-import TechStack from '@/components/sections/TechStack';
-
 export default function AboutPage() {
   return (
     <>
       <AboutHero />
+      <BrandStory />
       <Values />
-      <Timeline />
       <Team />
-      <TechStack />
     </>
   );
 }
