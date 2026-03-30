@@ -21,6 +21,7 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://gymcave.fit"),
   title: {
     default: "GymCave — The Future of Gym Management",
     template: "%s | GymCave",
@@ -31,14 +32,24 @@ export const metadata: Metadata = {
   openGraph: {
     title: "GymCave — The Future of Gym Management",
     description: "One powerful platform to manage members, track payments, and grow your fitness empire.",
+    url: "https://gymcave.fit",
     type: "website",
     locale: "en_US",
     siteName: "GymCave",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "GymCave — The Future of Gym Management",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "GymCave — The Future of Gym Management",
     description: "One powerful platform to manage members, track payments, and grow your fitness empire.",
+    images: ["/og-image.png"],
   },
   icons: {
     icon: "/favicon.ico?v=3",
