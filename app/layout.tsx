@@ -36,20 +36,11 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "GymCave",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 3840,
-        height: 2160,
-        alt: "GymCave — The Future of Gym Management",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "GymCave — The Future of Gym Management",
     description: "One powerful platform to manage members, track payments, and grow your fitness empire.",
-    images: ["/og-image.png"],
   },
   icons: {
     icon: "/favicon.ico?v=3",
