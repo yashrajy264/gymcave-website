@@ -39,8 +39,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/og-image.png",
-        width: 1200,
-        height: 630,
+        width: 3840,
+        height: 2160,
         alt: "GymCave — The Future of Gym Management",
       },
     ],
