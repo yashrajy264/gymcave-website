@@ -21,7 +21,7 @@ const footerLinks = {
 };
 
 const socials = [
-  { label: 'Instagram', icon: <Instagram size={18} strokeWidth={1} />, href: 'https://instagram.com/gymcave' },
+  { label: 'Instagram', icon: <Instagram size={18} strokeWidth={1} />, href: 'https://www.instagram.com/gymcaveapp/' },
   { label: 'LinkedIn', icon: <Linkedin size={18} strokeWidth={1} />, href: 'https://www.linkedin.com/company/gymcave' },
 ];
 
