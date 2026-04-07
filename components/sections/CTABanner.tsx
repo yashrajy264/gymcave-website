@@ -21,10 +21,21 @@ export default function CTABanner() {
           <p className={styles.sub}>
             Join gym owners already scaling with GymCave.
           </p>
-          <Link href="/contact" className={styles.cta}>
-            Start Free Trial
-            <ArrowRight size={16} strokeWidth={1} />
-          </Link>
+          <div className={styles.ctaRow}>
+            <Link href="/contact" className={styles.cta}>
+              Start Free Trial
+              <ArrowRight size={16} strokeWidth={1} />
+            </Link>
+            <a
+              href="https://platform.gymcave.fit/login"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.ctaAccent}
+            >
+              Get Started
+              <ArrowRight size={16} strokeWidth={1} />
+            </a>
+          </div>
           
           {/* Coming Soon Badges */}
           <div className={styles.comingSoonWrap}>

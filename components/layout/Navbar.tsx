@@ -19,39 +19,73 @@ const navLinks = [
 export default function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  // Close menu on scroll
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener('scroll', handleScroll);
+    let lastY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+      const delta = currentY - lastY;
+
+      setScrolled(currentY > 60);
+
+      if (currentY < 80) {
+        // Always show near the top
+        setHidden(false);
+      } else if (delta > 4) {
+        // Scrolling down — hide
+        setHidden(true);
+      } else if (delta < -4) {
+        // Scrolling up — show
+        setHidden(false);
+      }
+
+      lastY = currentY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close menu when route changes
   useEffect(() => {
     setMobileOpen(false);
   }, [pathname]);
 
-  // Lock body scroll when menu is open
+  // Lock body scroll when mobile menu is open
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.inset = '0';
+    } else {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.inset = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.inset = '';
+    };
   }, [mobileOpen]);
 
   return (
     <>
+      {/* ─── Desktop / Tablet Pill Navbar ─── */}
       <motion.nav
-        className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}
+        className={styles.navbar}
         initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        animate={hidden ? { y: -90, opacity: 0 } : { y: 0, opacity: 1 }}
+        transition={{ duration: hidden ? 0.3 : 0.45, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className={styles.inner}>
+        <div className={`${styles.pill} ${scrolled ? styles.pillScrolled : ''}`}>
+          {/* Logo */}
           <Link href="/" className={styles.logo}>
             <img src="/images/Group 3.svg" alt="GymCave" className={styles.logoImg} />
           </Link>
 
+          {/* Nav links */}
           <div className={styles.links}>
             {navLinks.map(link => (
               <Link
@@ -64,48 +98,62 @@ export default function Navbar() {
             ))}
           </div>
 
-          <div className={styles.actions}>
-            <button
-              className={`${styles.hamburger} ${mobileOpen ? styles.open : ''}`}
-              onClick={() => setMobileOpen(!mobileOpen)}
-              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-            >
-              {mobileOpen ? <X size={22} strokeWidth={1} /> : <Menu size={22} strokeWidth={1} />}
-            </button>
-          </div>
+          {/* Divider */}
+          <div className={styles.divider} />
+
+          {/* Get Started CTA */}
+          <a
+            href="https://platform.gymcave.fit/login"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.loginBtn}
+          >
+            Get Started
+          </a>
+
+          {/* Hamburger — mobile only */}
+          <button
+            className={styles.hamburger}
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Open menu"
+          >
+            <Menu size={22} strokeWidth={1.5} />
+          </button>
         </div>
       </motion.nav>
 
-      {/* Mobile Menu Overlay */}
+      {/* ─── Mobile Menu Overlay ─── */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             className={styles.mobileOverlay}
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
           >
+            {/* Header row */}
             <div className={styles.mobileHeader}>
               <Link href="/" className={styles.logo} onClick={() => setMobileOpen(false)}>
                 <img src="/images/Group 3.svg" alt="GymCave" className={styles.logoImg} />
               </Link>
               <button
-                className={styles.hamburger}
+                className={styles.closeBtn}
                 onClick={() => setMobileOpen(false)}
                 aria-label="Close menu"
               >
-                <X size={22} strokeWidth={1} />
+                <X size={22} strokeWidth={1.5} />
               </button>
             </div>
 
-            <div className={styles.mobileMenu}>
+            {/* Navigation links */}
+            <nav className={styles.mobileNav}>
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.href}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 + i * 0.05, duration: 0.4 }}
+                  transition={{ delay: 0.05 + i * 0.04, duration: 0.3 }}
                   className={styles.mobileLinkWrap}
                 >
                   <Link
@@ -117,20 +165,29 @@ export default function Navbar() {
                   </Link>
                 </motion.div>
               ))}
+            </nav>
 
-              {/* CTA */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.4 }}
-                className={styles.mobileCtaWrap}
+            {/* CTA buttons — pinned to bottom */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.3 }}
+              className={styles.mobileCtas}
+            >
+              <a
+                href="https://platform.gymcave.fit/login"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.mobileLoginBtn}
               >
-                <Link href="/contact" className={styles.mobileCta} onClick={() => setMobileOpen(false)}>
-                  Start Free Trial
-                  <ArrowRight size={16} strokeWidth={2} />
-                </Link>
-              </motion.div>
-            </div>
+                Get Started
+                <ArrowRight size={16} strokeWidth={2} />
+              </a>
+              <Link href="/contact" className={styles.mobileCta} onClick={() => setMobileOpen(false)}>
+                Start Free Trial
+                <ArrowRight size={16} strokeWidth={2} />
+              </Link>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

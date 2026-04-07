@@ -1,38 +1,46 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Navbar — centered pill, 3-column layout: logo | links | cta
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ─── Pill wrapper ────────────────────────────────────────────────── */
 .navbar {
   position: fixed;
-  top: 16px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
   z-index: 1000;
-  width: calc(100% - 32px);
-  max-width: 780px;
-  border-radius: var(--radius-pill);
-  background: rgba(10, 10, 15, 0.65);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid var(--border);
-  transition: all var(--duration-normal) var(--ease-out-expo);
+  pointer-events: none;             /* let clicks pass through empty space */
 }
 
-.scrolled {
-  background: rgba(10, 10, 15, 0.9);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  max-width: 720px;
-  border-color: rgba(200, 255, 0, 0.2);
-}
-
-.inner {
+.pill {
+  pointer-events: all;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 var(--space-5);
-  height: var(--navbar-height);
+  height: 52px;
+  padding: 0 8px 0 16px;
+  gap: 0;
+  border-radius: 999px;
+  background: rgba(12, 12, 18, 0.72);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.pillScrolled {
+  background: rgba(12, 12, 18, 0.94);
+  border-color: rgba(200, 255, 0, 0.12);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* ─── Logo ────────────────────────────────────────────────────────── */
 .logo {
   display: flex;
   align-items: center;
   flex-shrink: 0;
+  margin-right: 16px;
 }
 
 .logoImg {
@@ -40,34 +48,72 @@
   width: auto;
 }
 
+/* ─── Nav links ───────────────────────────────────────────────────── */
 .links {
   display: flex;
-  gap: var(--space-2);
+  align-items: center;
+  gap: 2px;
 }
 
 .link {
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--text-secondary);
-  padding: 8px 16px;
-  border-radius: var(--radius-pill);
-  transition: all var(--duration-fast) ease;
-  position: relative;
+  letter-spacing: 0.07em;
+  color: rgba(255, 255, 255, 0.55);
+  padding: 8px 14px;
+  border-radius: 999px;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.2s ease, background 0.2s ease;
 }
 
 .link:hover {
-  color: var(--text-primary);
+  color: rgba(255, 255, 255, 0.9);
 }
 
-.link.active {
-  color: var(--text-primary);
-  background: var(--bg-elevated);
+.active {
+  color: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.08);
 }
 
-/* Hamburger */
+/* ─── Divider between links and CTA ──────────────────────────────── */
+.divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 0 10px;
+  flex-shrink: 0;
+}
+
+/* ─── "Get Started" CTA ───────────────────────────────────────────── */
+.loginBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #0a0a0f;
+  background: #c8ff00;
+  padding: 9px 20px;
+  border-radius: 999px;
+  white-space: nowrap;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.loginBtn:hover {
+  background: #d9ff33;
+  box-shadow: 0 0 20px rgba(200, 255, 0, 0.5);
+  transform: translateY(-1px);
+}
+
+/* ─── Hamburger — mobile only ─────────────────────────────────────── */
 .hamburger {
   display: none;
   align-items: center;
@@ -75,80 +121,132 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  color: var(--text-primary);
+  color: rgba(255, 255, 255, 0.85);
   background: transparent;
-  transition: all var(--duration-fast) ease;
+  flex-shrink: 0;
+  transition: background 0.2s ease;
 }
 
 .hamburger:hover {
-  background: var(--bg-elevated);
+  background: rgba(255, 255, 255, 0.08);
 }
 
+/* ─── Close button in overlay ─────────────────────────────────────── */
+.closeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.85);
+  background: transparent;
+  flex-shrink: 0;
+  transition: background 0.2s ease;
+}
+
+.closeBtn:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   MOBILE OVERLAY
+   ═══════════════════════════════════════════════════════════════════ */
 .mobileOverlay {
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background-color: var(--bg-primary); 
+  background: var(--bg-primary);
   display: flex;
   flex-direction: column;
-  padding: 16px;
-  overflow-y: auto;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  touch-action: none;
+  padding: 0 24px;
 }
 
 .mobileHeader {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  padding: 0 8px;
-  margin-bottom: var(--space-8);
+  padding: 16px 0;
 }
 
-.mobileMenu {
+.mobileNav {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
-  padding: 0 var(--space-4);
-  flex: 1;
+  overflow: hidden;
+  padding: 8px 0;
 }
 
 .mobileLinkWrap {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  padding-bottom: var(--space-4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .mobileLink {
-  font-family: var(--font-heading);
-  font-size: 28px;
-  font-weight: 500;
-  color: var(--text-secondary);
-  text-decoration: none;
   display: block;
+  font-family: var(--font-heading);
+  font-size: clamp(20px, 5.5vw, 28px);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  padding: 14px 0;
   transition: color 0.2s ease;
 }
 
 .mobileLink:hover,
 .mobileLinkActive {
-  color: var(--text-primary);
+  color: rgba(255, 255, 255, 0.95);
 }
 
-.mobileCtaWrap {
-  margin-top: auto;
-  padding-bottom: var(--space-8);
+.mobileCtas {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 0 32px;
+}
+
+.mobileLoginBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  background: #c8ff00;
+  color: #0a0a0f;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 700;
+  padding: 14px;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mobileLoginBtn:hover {
+  background: #d9ff33;
+  box-shadow: 0 0 20px rgba(200, 255, 0, 0.35);
 }
 
 .mobileCta {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
   gap: 8px;
+  width: 100%;
   background: var(--text-primary);
   color: var(--bg-primary);
-  font-size: 16px;
+  font-family: var(--font-body);
+  font-size: 15px;
   font-weight: 600;
-  padding: 16px;
-  border-radius: var(--radius-pill);
+  padding: 14px;
+  border-radius: 999px;
+  text-decoration: none;
   transition: opacity 0.2s ease;
 }
 
@@ -156,38 +254,39 @@
   opacity: 0.9;
 }
 
+
+/* ═══════════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ─── Mobile (< 768px) ───────────────────────────────────────────── */
 @media (max-width: 767px) {
-  .links {
-    display: none;
-  }
+  .links    { display: none; }
+  .loginBtn { display: none !important; }
+  .divider  { display: none; }
+  .hamburger { display: flex; }
 
-  .hamburger {
-    display: flex;
-  }
-
+  /* Pin the collapsed pill to the top-right */
   .navbar {
-    width: auto;
-    max-width: max-content;
-    right: 16px;
-    left: auto;
-    transform: none;
-    background: rgba(10, 10, 15, 0.75);
+    justify-content: flex-end;
+    padding-right: 16px;
   }
 
-  .scrolled {
-    max-width: max-content;
-    background: rgba(10, 10, 15, 0.95);
-  }
-
-  .inner {
-    padding: 0 var(--space-3) 0 var(--space-4);
-    gap: var(--space-6);
+  .pill {
+    padding: 0 8px 0 12px;
+    gap: 4px;
   }
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
+/* ─── Tablet squeeze (768–1024px) ────────────────────────────────── */
+@media (min-width: 768px) and (max-width: 1024px) {
   .link {
-    font-size: 12px;
-    padding: 6px 12px;
+    font-size: 11px;
+    padding: 7px 10px;
+    letter-spacing: 0.05em;
+  }
+  .loginBtn {
+    font-size: 11px;
+    padding: 8px 14px;
   }
 }

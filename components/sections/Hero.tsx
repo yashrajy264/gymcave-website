@@ -81,6 +81,15 @@ export default function Hero() {
               Start Free Trial
               <ArrowRight size={16} strokeWidth={1} />
             </Link>
+            <a
+              href="https://platform.gymcave.fit/login"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.accentCta}
+            >
+              Get Started
+              <ArrowRight size={16} strokeWidth={1} />
+            </a>
           </motion.div>
 
         </motion.div>
